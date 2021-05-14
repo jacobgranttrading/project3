@@ -1,0 +1,31 @@
+,index,Symbol,AssetType,Name,Description,CIK,Exchange,Currency,Country,Sector,Industry,Address,FullTimeEmployees,FiscalYearEnd,LatestQuarter,MarketCapitalization,EBITDA,PERatio,PEGRatio,BookValue,DividendPerShare,DividendYield,EPS,RevenuePerShareTTM,ProfitMargin,OperatingMarginTTM,ReturnOnAssetsTTM,ReturnOnEquityTTM,RevenueTTM,GrossProfitTTM,DilutedEPSTTM,QuarterlyEarningsGrowthYOY,QuarterlyRevenueGrowthYOY,AnalystTargetPrice,TrailingPE,ForwardPE,PriceToSalesRatioTTM,PriceToBookRatio,EVToRevenue,EVToEBITDA,Beta,52WeekHigh,52WeekLow,50DayMovingAverage,200DayMovingAverage,SharesOutstanding,SharesFloat,SharesShort,SharesShortPriorMonth,ShortRatio,ShortPercentOutstanding,ShortPercentFloat,PercentInsiders,PercentInstitutions,ForwardAnnualDividendRate,ForwardAnnualDividendYield,PayoutRatio,DividendDate,ExDividendDate,LastSplitFactor,LastSplitDate,ticker
+0,0,TSLA,Common Stock,"Tesla, Inc","Tesla, Inc. designs, develops, manufactures, leases, and sells electric vehicles, and energy generation and storage systems in the United States, China, and internationally. The company operates in two segments, Automotive, and Energy Generation and Storage. The Automotive segment offers electric vehicles, as well as sells automotive regulatory credits. It provides sedans and sport utility vehicles through direct and used vehicle sales, a network of Tesla Superchargers, and in-app upgrades; and purchase financing and leasing services. This segment is also involved in the provision of non-warranty after-sales vehicle services, sale of used vehicles, retail merchandise, and vehicle insurance, as well as sale of products through its subsidiaries to third party customers; services for electric vehicles through its company-owned service locations, and Tesla mobile service technicians; and vehicle limited warranties and extended service plans. The Energy Generation and Storage segment engages in the design, manufacture, installation, sale, and leasing of solar energy generation and energy storage products, and related services to residential, commercial, and industrial customers and utilities through its website, stores, and galleries, as well as through a network of channel partners. This segment also offers service and repairs to its energy product customers, including under warranty; and various financing options to its solar customers. The company was formerly known as Tesla Motors, Inc. and changed its name to Tesla, Inc. in February 2017. Tesla, Inc. was founded in 2003 and is headquartered in Palo Alto, California.",1318605,NASDAQ,USD,USA,Consumer Cyclical,Auto Manufacturers,"3500 Deer Creek Road, Palo Alto, CA, United States, 94304",70757,December,2021-03-31,551130693632,4551000064,573.2565,3.6725,23.901,None,0,0.998,38.052,0.0318,0.0601,0.0299,0.0716,35939999744,6630000000,0.998,21.304,0.736,663.97,573.2565,138.8889,19.1952,25.8317,16.4145,125.9205,1.9845,895.9,157,683.0763,667.6198,963329984,775047512,41382433,51176090,1.27,0.04,0.0534,19.63,44.249,0,0,0,None,None,5:1,2020-08-31,TSLA
+0,0, TDOC
+0,0, ROKU
+0,0, SQ
+0,0, SHOP
+0,0, ZM
+0,0, SPOT
+0,0, Z
+0,0, TWLO
+0,0, COIN
+0,0, U
+0,0, EXAS
+0,0, CRSP
+0,0, DOCU
+0,0, PLTR
+0,0, NVTA
+0,0, TXG
+0,0, NTLA
+0,0, DKNG
+0,0, NTDOY
+0,0, BEAM
+0,0, SE
+0,0, IRDM
+0,0, IOVA
+0,0, TWTR
+0,0, FATE
+0,0, TCEHY
+0,0, TER
+0,0, TWOU
+0,0, TWST
