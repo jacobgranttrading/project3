@@ -139,15 +139,16 @@ def execute_backtest(data_df,initial_capital=10000.00,shares=500):
     # Make some predictions with the loaded model
     model = load_model()
 
-    data_split = rm3.load_data(data_df, n_steps=50, scale=True, shuffle=True, lookup_step=1, split_by_date=True,
-                test_size=0.2, feature_columns=['Adj Close', 'Volume', 'Open', 'High', 'Low'])
+    #data_split = rm3.load_data(data_df, n_steps=50, scale=True, shuffle=True, lookup_step=1, split_by_date=True,
+                #test_size=0.2, feature_columns=['Adj Close', 'Volume', 'Open', 'High', 'Low'])
 
 
     # Final Dataframe - running predictions and getting predicted prices & option chains
-    final_df,recommendation, predicted_price, strike_price_call, strike_price_put = rm3.recommendation(model, data_split)
+    #final_df,recommendation, predicted_price, strike_price_call, strike_price_put = rm3.recommendation(model, data_split)
 
 
-    return final_df,recommendation, predicted_price, strike_price_call, strike_price_put
+    #return final_df,recommendation, predicted_price, strike_price_call, strike_price_put
+    return data_df
 
 def load_model(model_file="model_3_15day.json",weights_file="model_3_15day.h5"):
     # load json and create model

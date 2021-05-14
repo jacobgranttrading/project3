@@ -58,7 +58,7 @@ ticker_list = list(result)
 opts = [{'label': i, 'value': i} for i in ticker_list]
 
 # Web App function to update the data
-def update_graph(data_df, ticker=None, future_price=0):
+def update_graph(data_df, ticker=None):
     dff = data_df.copy()
     # Trade Signals
     # Plotly Graph Objects (GO)
@@ -108,7 +108,8 @@ for tkr in range(0,len(ticker_list)):
     comb_df = pd.concat([df,signals_df],join='inner',axis=1)
 
     # Loading the models and back-testing the data w/ signals; returns dataframe
-    all_df,recommendation, predicted_price, strike_price_call, strike_price_put = td.execute_backtest(comb_df,initial_capital=10000.00,shares=500)
+    #all_df,recommendation, predicted_price, strike_price_call, strike_price_put = td.execute_backtest(comb_df,initial_capital=10000.00,shares=500)
+    all_df = td.execute_backtest(comb_df,initial_capital=10000.00,shares=500)
 
     # Load Ticker Options Chain from the Webull Trading Application
     #if ticker != 'SPY':
@@ -116,9 +117,15 @@ for tkr in range(0,len(ticker_list)):
 
     print(all_df[:5])
 
-    candlestick,xover = update_graph(all_df,symbol,predicted_price)
+    candlestick,xover = update_graph(all_df,symbol)
     #Storing objects in a dictionary for deployment
     plot_objects.update([('ticker%s'%tkr,symbol),('candlestick%s'%tkr,candlestick),('xover%s'%tkr,xover)])
+
+    decision = input('Do you want to buy the %s stock? Type yes or no. '%symbol)
+    if decision.lower() == 'yes':
+        price = input('At what price would you like to purchase the stock?  ')
+        shares = input('How many shares would you like to purchase?  ')
+        et.placeWebullOrder(stock=symbol, price=price, num_shares=shares, orderType='LMT', action='BUY', enforce='GTC')
 
 # App layout
 app.layout = html.Div(style={'backgroundColor': colors['background']},children = [
