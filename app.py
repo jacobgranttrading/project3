@@ -13,6 +13,7 @@ import dash_table as dtable
 
 import time
 
+#database connection declaration
 user = 'wmekunquekekfe'
 passw = '1c42e8891acd9d985eaba7c31859b682d1e6321158bf4e3c6e8d6278de7ccdf1'
 db = 'dr8aa0j0e9qo4'

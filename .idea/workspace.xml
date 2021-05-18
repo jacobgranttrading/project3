@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c540a188-e743-4e2c-a181-3058c999729f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/googleSheets.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinalCode (1).py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/join_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/join_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_ticker_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_ticker_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_ticker_data_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_ticker_data_2.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
