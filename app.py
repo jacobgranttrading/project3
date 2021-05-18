@@ -1,23 +1,35 @@
 import pandas as pd
+import dash
 from flask import Flask, render_template, request
 import plotly.graph_objects as go
 import tickerData as td
 import executeTrade as et
+import FinalCode1 as analyze
 import dash_core_components as dcc
 import dash_html_components as html
+import sqlalchemy
 from dash.dependencies import Input, Output
 import dash_table as dtable
-import dash
+
 import time
+
+user = 'wmekunquekekfe'
+passw = '1c42e8891acd9d985eaba7c31859b682d1e6321158bf4e3c6e8d6278de7ccdf1'
+db = 'dr8aa0j0e9qo4'
+engine = sqlalchemy.create_engine(f"postgresql://{user}:{passw}@ec2-54-152-185-191.compute-1.amazonaws.com:5432/{db}")
+
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 # Establishing Web App Environment
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+server = Flask(__name__)
+app = dash.Dash(__name__,server=server, external_stylesheets=external_stylesheets)
 #app2 = Flask(__name___)
 #@app2.route('/form')
 def form():
     return render_template('form.html')
+
+app.config["suppress_callback_exceptions"] = True
 
 
 #@app2.route('/data/', methods=['POST','GET'])
@@ -46,14 +58,17 @@ spy_df = table[0]
 spy_list = spy_df.Symbol.to_list()
 
 # User input for ticker symbol, short & long windows, & time sample period
-ticker = input ('Enter the ticker symbol that you want to use: ')
-short_window = int(input ('Enter the short window period (days): '))
-long_window = int(input ('Enter the long window period (days): '))
-period = int(input ('Enter the ticker sample period (days): '))
+ticker_df = pd.read_sql('SELECT * FROM customer',engine)
+ticker_row = ticker_df.customer_stocks.iloc[-1]
+ticker_list = ticker_row.split(',')
+tickers = analyze.analyze_stocks(ticker_list)
 
-tickers = ticker.split(' ')
-result = set(tickers)
-ticker_list = list(result)
+short_window = 9
+
+long_window = 21
+
+period = 1000
+ticker_list = tickers
 
 opts = [{'label': i, 'value': i} for i in ticker_list]
 
@@ -73,7 +88,7 @@ def update_graph(data_df, ticker=None):
     )
 
     candlestick.update_layout(
-        title_text="%s Stock Prices" % ticker,
+        title_text="Stock Prices",
         title_xanchor="center",
         title_font=dict(size=24),
         title_x=0.5,
@@ -108,12 +123,7 @@ for tkr in range(0,len(ticker_list)):
     comb_df = pd.concat([df,signals_df],join='inner',axis=1)
 
     # Loading the models and back-testing the data w/ signals; returns dataframe
-    #all_df,recommendation, predicted_price, strike_price_call, strike_price_put = td.execute_backtest(comb_df,initial_capital=10000.00,shares=500)
     all_df = td.execute_backtest(comb_df,initial_capital=10000.00,shares=500)
-
-    # Load Ticker Options Chain from the Webull Trading Application
-    #if ticker != 'SPY':
-        #options_df = et.get_webull_options(symbol)
 
     print(all_df[:5])
 
@@ -121,6 +131,7 @@ for tkr in range(0,len(ticker_list)):
     #Storing objects in a dictionary for deployment
     plot_objects.update([('ticker%s'%tkr,symbol),('candlestick%s'%tkr,candlestick),('xover%s'%tkr,xover)])
 
+    # Decision to place orders and then how much
     decision = input('Do you want to buy the %s stock? Type yes or no. '%symbol)
     if decision.lower() == 'yes':
         price = input('At what price would you like to purchase the stock?  ')
@@ -130,7 +141,7 @@ for tkr in range(0,len(ticker_list)):
 # App layout
 app.layout = html.Div(style={'backgroundColor': colors['background']},children = [
 
-    html.Div([html.H1("ITS BOT-TIME with Dash", style={'text-align': 'center','color':'white'}),
+    html.Div([html.H1('%s Candlestick Chart'%(plot_objects['ticker0']), style={'text-align': 'center','color':'white'}),
 
     html.Div(id='output',children=[]),
 
@@ -194,6 +205,9 @@ html.P([
 # Connect the Plotly graphs with Dash Components
 
 # ------------------------------------------------------------------------------
+#@server.route('/dash')
+#def my_dash_app():
+    #return app.index()
 if __name__ == '__main__':
     app.run_server(debug=True)
     #app2.run(host='localhost',port=5000)
